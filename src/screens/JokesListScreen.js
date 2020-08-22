@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import { StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
 import { ListItem, Button } from "react-native-elements";
 import axios from "axios";
 
@@ -47,9 +41,13 @@ const JokesListScreen = () => {
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity>
-              <ListItem bottomDivider chevron title={item.setup} />
-            </TouchableOpacity>
+            <ListItem
+              bottomDivider
+              titleStyle={styles.title}
+              subtitleStyle={styles.subtitle}
+              title={item.setup}
+              subtitle={item.punchline}
+            />
           );
         }}
       />
@@ -65,6 +63,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  title: {
+    marginBottom: 12,
+  },
+  subtitle: {
+    fontWeight: "bold",
   },
 });
 

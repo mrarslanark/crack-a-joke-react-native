@@ -1,6 +1,4 @@
 import * as React from "react";
-import { TouchableOpacity } from "react-native-elements";
-import { MaterialIcons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./src/screens/HomeScreen";
@@ -15,12 +13,12 @@ function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Crack A Joke" }}
+          options={{ title: "Crack a Joke" }}
         />
         <Stack.Screen
           name="JokesList"
           component={JokesListScreen}
-          options={{ title: "Jokes List" }}
+          options={{ title: "Jokes" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

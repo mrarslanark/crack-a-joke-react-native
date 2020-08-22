@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
     <ScrollView>
       <Card>
         <Text style={{ textAlign: "center" }}>
-          Welcome to Crack a Joke. Smile, laugh and enjoy the app.
+          Welcome to Crack a Joke.{"\n"}Smile, laugh and enjoy the app.
         </Text>
       </Card>
       <Card title="Here's a Joke">
