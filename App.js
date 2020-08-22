@@ -1,25 +1,16 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './src/screens/HomeScreen';
-import { Provider } from './src/context/JokesContext'
 
-const Stack = createStackNavigator();
+const navigator = createStackNavigator({
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Crack a Joke" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+  Home: HomeScreen
 
-export default () => {
-  return (
-    <Provider>
-      <App />
-    </Provider>
-  )
-}
+}, {
+  initialRouteName: 'Home',
+  defaultNavigationOptions: {
+    title: 'Crack a Joke'
+  }
+});
+
+export default createAppContainer(navigator);
