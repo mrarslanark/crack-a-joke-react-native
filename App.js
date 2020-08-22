@@ -1,16 +1,30 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import HomeScreen from './src/screens/HomeScreen';
+import * as React from "react";
+import { TouchableOpacity } from "react-native-elements";
+import { MaterialIcons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import JokesListScreen from "./src/screens/JokesListScreen";
 
-const navigator = createStackNavigator({
+const Stack = createStackNavigator();
 
-  Home: HomeScreen
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Crack A Joke" }}
+        />
+        <Stack.Screen
+          name="JokesList"
+          component={JokesListScreen}
+          options={{ title: "Jokes List" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
-}, {
-  initialRouteName: 'Home',
-  defaultNavigationOptions: {
-    title: 'Crack a Joke'
-  }
-});
-
-export default createAppContainer(navigator);
+export default App;

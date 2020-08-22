@@ -3,9 +3,8 @@ import { View, StyleSheet, ActivityIndicator, ScrollView } from "react-native";
 import { Text, Card, Button } from "react-native-elements";
 import axios from "axios";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [randomJoke, setRandomJoke] = useState();
-  const [randomJokes, setRandomJokes] = useState();
 
   const getARandomJoke = async () => {
     try {
@@ -18,24 +17,11 @@ const HomeScreen = () => {
     }
   };
 
-  const getListOfRandomJokes = async () => {
-    try {
-      const response = await axios.get(
-        "https://official-joke-api.appspot.com/jokes/ten"
-      );
-      console.log(response.data);
-      setRandomJokes(response.data);
-    } catch (err) {
-      console.log(err.response);
-    }
-  };
-
   useEffect(() => {
     getARandomJoke();
-    getListOfRandomJokes();
   }, []);
 
-  if (!randomJoke || !randomJokes) {
+  if (!randomJoke) {
     return (
       <View style={styles.loading}>
         <ActivityIndicator size="large" />
@@ -60,8 +46,12 @@ const HomeScreen = () => {
           onPress={getARandomJoke}
         />
       </Card>
-      <Card title="List of Jokes">
-        <Button type="clear" title="Give me 10 Jokes" />
+      <Card>
+        <Button
+          type="clear"
+          title="Give me 10 Jokes"
+          onPress={() => navigation.navigate("JokesList")}
+        />
       </Card>
     </ScrollView>
   );
